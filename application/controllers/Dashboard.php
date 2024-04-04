@@ -12,7 +12,6 @@ class Dashboard extends CI_Controller
         $this->load->model('m_setting_web');
         $this->load->model('User_model');
         $this->load->model('M_pulsa');
-        $this->load->model('M_penerbangan');
         $this->load->library('form_validation');
         if(empty($this->session->userdata('username'))){
         	redirect(base_url('login/logout'));
@@ -31,12 +30,10 @@ class Dashboard extends CI_Controller
         $balance =$result->balance;
     }
 		$kd_pulsa = $this->M_pulsa->get_all();
-		$penerbangan = $this->M_penerbangan->get_all();
-   
+	
     $data = array(
 		'judul'=>'Dashboard',
 		'kode_pulsa'	 => '' . count($kd_pulsa) . '',
-		'penerbangan'	 => '' . count($penerbangan) . '',
         'status'=> $message,
 		'saldo'	 => 'Rp. '.$balance,
     	'isi'    => 'admin/dasbor/utama'
