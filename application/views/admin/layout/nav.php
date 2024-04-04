@@ -57,7 +57,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                PPOB SERVER 1
+                PPOB SERVER
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

@@ -24,7 +24,7 @@ class Dashboard extends CI_Controller
     $result=$this->portal($val);
     $balance = 0;
     if ($result==NULL) {
-    $message = $result->message;
+    $message = "Gagal Konek ke Server";
     $balance =0;
     }else{
         $message =$result->message;
