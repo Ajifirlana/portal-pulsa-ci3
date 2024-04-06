@@ -11,54 +11,43 @@ class M_pulsa extends CI_Model
     public $order = 'DESC';
     public $url = 'https://portalpulsa.com/api/connect/';
          
-          public $portal_userid = 'portal-userid: P163966';
-          public $portal_key = 'portal-key: ed9ed3024c8d589c54bdb4c03c35e2b5';
-          public $portal_secret = 'portal-secret: cff218abf8adaf112b80d694984464a667af9aad2a7ad3e3edf2b7811df85abe';
+        //   public $portal_userid = 'portal-userid: P163966';
+        //   public $portal_key = 'portal-key: ed9ed3024c8d589c54bdb4c03c35e2b5';
+        //   public $portal_secret = 'portal-secret: cff218abf8adaf112b80d694984464a667af9aad2a7ad3e3edf2b7811df85abe';
     function __construct()
     {
         parent::__construct();
     }
 
+   function get_first_data() {
+        $query = $this->db->get('setting_website');
+        return $query->row(); 
+    }
+
     function api(){
+        $first_data = $this->get_first_data();
+        $portal_userid = $first_data->portal_userid;
+        $portal_key = $first_data->portal_key;
+        $portal_secret = $first_data->portal_secret;
+
         $url = $this->url;
 
-$header = array(
-    $this->portal_userid,
-    $this->portal_key, 
-    $this->portal_secret, );
-$data = array(
-    'inquiry' => 'S', 
-    'url'=>$url,'header'=>$header
-    );
+        $header = array(
+            $portal_userid,
+            $portal_key, 
+            $portal_secret, );
+        $data = array(
+            'inquiry' => 'S', 
+            'url'=>$url,
+            'header'=>$header,
+            'portal_userid'=>$portal_userid,
+            'portal_key'=>$portal_key,
+            'portal_secret'=>$portal_secret,
+            );
 
-return $data;
+        return $data;
     }
-    function rajabiller(){
-        $curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://rajabiller.fastpay.co.id/transaksi/json_devel.php',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS =>'{
-    "method"  : "rajabiller.balance",
-    "uid": "SP310923",
-    "pin": "228078",
-}',
-  CURLOPT_HTTPHEADER => array(
-    'Content-Type: application/json'
-  ),
-));
-
-$response = curl_exec($curl);
-curl_close($curl);
-return json_decode($response, true);
-    }
+    
   
     // get all
     function get_code_pln()

@@ -77,10 +77,7 @@ curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 $result = curl_exec($ch);
 $row = json_decode($result,true);
-// echo"<pre>";
-// var_dump();
-// echo"</pre>";
-// exit;
+
    $data = array(
 			'judul'=>'Dashboard',
 			'harga'=>$row["message"],
@@ -88,12 +85,13 @@ $row = json_decode($result,true);
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
     }
     function cekharga(){
-    	$url = 'https://portalpulsa.com/api/connect/';
+      $api = $this->M_pulsa->api();
+     
       $code = $this->input->post('code');
       $header = array(
-          'portal-userid: P163966',
-          'portal-key: ed9ed3024c8d589c54bdb4c03c35e2b5', 
-          'portal-secret: cff218abf8adaf112b80d694984464a667af9aad2a7ad3e3edf2b7811df85abe', );
+          $api['portal_userid'],
+          $api['portal_key'], 
+          $api['portal_secret'], );
         
       $data = array(
       'inquiry' => 'HARGA', // konstan
@@ -101,7 +99,7 @@ $row = json_decode($result,true);
       );
 
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_URL, $api['url']);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
       curl_setopt($ch, CURLOPT_POSTREDIR, CURL_REDIR_POST_ALL);
@@ -127,12 +125,12 @@ $row = json_decode($result,true);
     	$this->load->view('admin/layout/wrapper', $data, FALSE);	
     }
     public function proses_deposit(){
-    	$url = 'https://portalpulsa.com/api/connect/';
-
+      $api = $this->M_pulsa->api();
+     
 $header = array(
-    'portal-userid: P163966',
-    'portal-key: ed9ed3024c8d589c54bdb4c03c35e2b5', 
-    'portal-secret: cff218abf8adaf112b80d694984464a667af9aad2a7ad3e3edf2b7811df85abe', );
+  $api['portal_userid'],
+  $api['portal_key'], 
+  $api['portal_secret'], );
   	$bank = $this->input->post('bank');
 	$nominal = $this->input->post('nominal');
 
@@ -143,7 +141,7 @@ $data = array(
 );
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_URL,  $api['url']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_POSTREDIR, CURL_REDIR_POST_ALL);
@@ -170,13 +168,13 @@ redirect(base_url('dashboard/deposit'));
     }
 
     public function proses_isi_pulsa(){
-
-	$url = 'https://portalpulsa.com/api/connect/';
-
+      $api = $this->M_pulsa->api();
+     
 		$header = array(
-    'portal-userid: P163966',
-    'portal-key: ed9ed3024c8d589c54bdb4c03c35e2b5', 
-    'portal-secret: cff218abf8adaf112b80d694984464a667af9aad2a7ad3e3edf2b7811df85abe', );
+      $api['portal_userid'],
+      $api['portal_key'], 
+      $api['portal_secret'], 
+     );
 
     $no_hp = $this->input->post('no_hp');
   $idcust = $this->input->post('idcust');
@@ -195,7 +193,7 @@ $trxid = $this->input->post('trxid');
 	);
 
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_URL, $api['url']);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_POSTREDIR, CURL_REDIR_POST_ALL);
