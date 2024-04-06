@@ -110,13 +110,16 @@ CREATE TABLE IF NOT EXISTS `setting_website` (
   `no_hp` varchar(15) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
   `alamat` text,
+  `portal_userid` varchar(50) DEFAULT NULL,
+  `portal_key` text,
+  `portal_secret` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Membuang data untuk tabel ppob.setting_website: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel ppob.setting_website: ~1 rows (lebih kurang)
 /*!40000 ALTER TABLE `setting_website` DISABLE KEYS */;
-INSERT INTO `setting_website` (`id`, `nama_website`, `deskripsi`, `no_hp`, `email`, `alamat`) VALUES
-	(1, 'AJI ppob', 'pembelian tiket pesawat murah dan mudah secara online dan terpercaya', '089531941653', 'firlana89@gmail.com', 'JAMBI');
+INSERT INTO `setting_website` (`id`, `nama_website`, `deskripsi`, `no_hp`, `email`, `alamat`, `portal_userid`, `portal_key`, `portal_secret`) VALUES
+	(1, 'AJI ppob', 'pembelian tiket pesawat murah dan mudah secara online dan terpercaya', '089531941653', 'firlana89@gmail.com', 'JAMBI', 'portal-userid: P163966', 'portal-key: ed9ed3024c8d589c54bdb4c03c35e2b5', 'portal-secret: cff218abf8adaf112b80d694984464a667af9aad2a7ad3e3edf2b7811df85abe');
 /*!40000 ALTER TABLE `setting_website` ENABLE KEYS */;
 
 -- membuang struktur untuk table ppob.tb_pesawat
@@ -193,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `transaksi` (
   `log` text,
   `tanggal` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4;
 
 -- Membuang data untuk tabel ppob.transaksi: ~6 rows (lebih kurang)
 /*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
@@ -204,7 +207,8 @@ INSERT INTO `transaksi` (`id`, `kategori`, `no_hp`, `harga`, `log`, `tanggal`) V
 	(78, 'game', '089531941653', '7975', NULL, NULL),
 	(79, 'pulsa', '089531941653', '1495', NULL, '03-04-2024'),
 	(80, 'pln', '089531941653', '550000', NULL, NULL),
-	(81, 'game', '089531941653', '7975', NULL, NULL);
+	(81, 'game', '089531941653', '7975', NULL, NULL),
+	(82, 'pulsa', '089531941653', '1495', NULL, '06-04-2024');
 /*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
