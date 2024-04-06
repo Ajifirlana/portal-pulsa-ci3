@@ -23,16 +23,15 @@
                  <thead>
                   <tr>
                     <th>Log</th>
-                    <th>Tanggal</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <?php foreach ($transaksi as $row) {?><tr>
+<tr>
 
-                    <td><?php echo $row->log;?></td>
-                    <td><?php echo $row->tanggal;?></td>
+                    <td><?php echo $transaksi;?></td>
+                    <td></td>
                   
-                  </tr>  <?php }?>
+                  </tr>
                 </tbody>
               </table>
             </div>
