@@ -27,7 +27,6 @@ class Dashboard extends CI_Controller
     $balance =0;
     }else{
         $message =$result->message;
-        $balance =$result->balance;
     }
 		$kd_pulsa = $this->M_pulsa->get_all();
 	
