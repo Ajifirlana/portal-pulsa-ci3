@@ -27,7 +27,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h5><?php echo $saldo;?></h5>
+                <h5><?php echo substr($status,25,50)  ?></h5>
               </div>
               <a href="<?php echo base_url('dashboard/deposit') ?>" class="small-box-footer">Deposit<i class="fas fa-arrow-circle-right"></i></a>
             </div>
