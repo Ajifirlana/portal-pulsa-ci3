@@ -38,7 +38,7 @@
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>AdminLTE</b> 3.1.0
-      <b>Help Wa :</b> 089531941653
+      <b>Help Wa :</b> <a href="https://wa.me/089531941653" target="_blank">089531941653</a> 
     </div>
     
     <strong>Copyright &copy; 2014-<?php echo $year ?></strong> All rights reserved.

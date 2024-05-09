@@ -19,6 +19,10 @@
                     <label>Deskripsi</label>
                     <textarea name="deskripsi" class="form-control"><?= $row->deskripsi?></textarea>
                   </div>
+                  <div class="form-group">
+                    <label>IP address</label>
+                    <textarea class="form-control" name="ip_adress"><?= $_SERVER['REMOTE_ADDR']?></textarea>
+                  </div>
                 </div>
 
                 <div class="col-md-6">
@@ -35,6 +39,7 @@
                     <label>Alamat</label>
                     <textarea class="form-control" name="alamat"><?= $row->alamat?></textarea>
                   </div>
+                 
                 </div>
               </div>
               </div>
