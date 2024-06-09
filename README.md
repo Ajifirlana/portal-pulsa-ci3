@@ -1,3 +1,5 @@
+# requirement
+-php 7.4
 # portal pulsa API
  portal-userid:523356
  portal-key: ed9ed3024c8d589c54bdb4c03c35e2b5
